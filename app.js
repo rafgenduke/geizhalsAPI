@@ -7,11 +7,10 @@ export default class geizhals {
     const listViewItems = [];
     const items = [];
     do {
-      const response = await fetch("https://geizhals.at/?fs=" + searchString);
+      const response = await fetch("https://geizhals.at/?fs=" + searchString.replaceAll(" ", "+"));
       const text = await response.text();
   
       const doc = new jsdom.JSDOM(text);
-      //fs.writeFileSync("./test.html", text);
 
       let items = Array.from(doc.window.document.getElementsByClassName("listview__item"));
 
@@ -20,7 +19,7 @@ export default class geizhals {
         items = items.slice(0, 30 - diff);
       }
       listViewItems.push(...items);
-    } while(listViewItems.length % 30 == 0 && top >= listViewItems.length);
+    } while(listViewItems.length % 30 == 0 && top >= listViewItems.length && items.length > 0);
 
     listViewItems.forEach(listViewItem => {
       const nameLink = listViewItem.getElementsByClassName("listview__name-link").item(0);
@@ -47,8 +46,6 @@ export default class geizhals {
         "specs": specs
       })
     });
-
-    //fs.writeFileSync("./test.json", JSON.stringify(items));
     return items;
   }
 }
