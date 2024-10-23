@@ -1,0 +1,21 @@
+{
+  "type": "module",
+  "name": "geizhals-api",
+  "version": "0.1.0",
+  "description": "",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafgenduke/geizhalsAPI.git"
+  },
+  "author": "Rafgenduke",
+  "license": "Apache V2.0",
+  "bugs": {
+    "url": "https://github.com/rafgenduke/geizhalsAPI/issues"
+  },
+  "homepage": "https://github.com/rafgenduke/geizhalsAPI#readme",
+  "dependencies": {
+    "jsdom": "^25.0.1",
+    "node-fetch": "^3.3.2"
+  }
+}
